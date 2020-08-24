@@ -26,16 +26,15 @@ public class TennisGame implements TennisGameInterface {
         return GameConstants.SCORE_LOVE + GameConstants.TXT_SPACE + GameConstants.TXT_ALL;
     }
 
-    public void increaseAPointForFirstPlayer() {
-        firstPlayerScore++;
+    public void increasePlayerScore(String pointWinnerPlayer) {
+        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
+            firstPlayerScore++;
+        else if (pointWinnerPlayer.equalsIgnoreCase(secondPlayerName))
+            secondPlayerScore++;
     }
 
     public int getFirstPlayerScore() {
         return firstPlayerScore;
-    }
-
-    public void increaseAPointForSecondPlayer() {
-        secondPlayerScore++;
     }
 
     public int getSecondPlayerScore() {
