@@ -28,6 +28,8 @@ public class TennisGame implements TennisGameInterface {
 
         if (checkForDeuce()) {
             currentGameScore = GameConstants.SCORE_DEUCE;
+        } else if ((secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint() == GameConstants.ONE_POINT) && secondPlayer.getScoredPoint() > GameConstants.THREE_POINT && firstPlayer.getScoredPoint() > GameConstants.THREE_POINT) {
+            return GameConstants.SCORE_ADVANTAGE + GameConstants.TXT_COLON + secondPlayer.getName();
         } else {
             currentGameScore = formatScore();
         }
