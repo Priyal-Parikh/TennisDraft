@@ -6,4 +6,5 @@ public class TestConstants {
     public static final String LOVE = "Love";
     public static final String ALL = "All";
     public static final String SPACE = " ";
+    public static final int ONE_POINT = 1;
 }
