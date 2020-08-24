@@ -12,23 +12,35 @@ public class TennisSimulator {
 
     public static void main(String[] args) {
         TennisGameInterface tennisGame = startGameWithTwoPlayers();
-        System.out.println("Game starts!!!");
+        playGame(tennisGame);
+        scanner.close();
+    }
 
+    private static void playGame(TennisGameInterface tennisGame) {
+        System.out.println("Game starts!!!");
+    try {
         while (!tennisGame.getScore().contains("Winner")) {
-            System.out.print("Point scored by :");
+            System.out.print("Enter point winner player:");
             String pointScoredByPlayer = scanner.nextLine();
             try {
                 tennisGame.increasePlayerScore(pointScoredByPlayer);
             } catch (TennisException e) {
                 System.out.println("Exception occurred: " + e.getMessage());
             }
-            System.out.println("/////////////////////////////////////////////////////");
-            System.out.println(" "+tennisGame.getScore());
-            System.out.println("/////////////////////////////////////////////////////");
+            printScoreBoard(tennisGame);
         }
+    }catch (TennisException e){
+        System.out.println("1st Player:"+tennisGame.getFirstPlayer().getScoredPoint() +"   2nd PLayer:"+tennisGame.getSecondPlayer().getScoredPoint());
+        System.out.println("Exception occurred: " + e.getMessage());
+    }
 
         System.out.println("Game over!");
-        scanner.close();
+    }
+
+    private static void printScoreBoard(TennisGameInterface tennisGame) {
+        System.out.println("/////////////////////////////////////////////////////");
+        System.out.println(" " + tennisGame.getScore());
+        System.out.println("/////////////////////////////////////////////////////");
     }
 
     private static TennisGameInterface startGameWithTwoPlayers() {

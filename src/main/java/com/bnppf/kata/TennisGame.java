@@ -64,15 +64,15 @@ public class TennisGame implements TennisGameInterface {
     }
 
     private boolean checkForAdvantage() {
-        return isBothPlayersBeyondForty() && pointDifference() == GameConstants.ONE_POINT;
+        return isAnyPlayerBeyondForty() && pointDifference() == GameConstants.ONE_POINT;
     }
 
     private int pointDifference() {
         return Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint());
     }
 
-    private boolean isBothPlayersBeyondForty() {
-        return secondPlayer.getScoredPoint() > GameConstants.THREE_POINT && firstPlayer.getScoredPoint() > GameConstants.THREE_POINT;
+    private boolean isAnyPlayerBeyondForty() {
+        return secondPlayer.getScoredPoint() > GameConstants.THREE_POINT || firstPlayer.getScoredPoint() > GameConstants.THREE_POINT;
     }
 
     private String formatScore() {
