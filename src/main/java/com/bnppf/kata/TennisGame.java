@@ -29,7 +29,7 @@ public class TennisGame implements TennisGameInterface {
         if (checkForDeuce()) {
             currentGameScore = GameConstants.SCORE_DEUCE;
         } else if (checkForAdvantage()) {
-            return GameConstants.SCORE_ADVANTAGE + GameConstants.TXT_COLON + (firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName() : secondPlayer.getName());
+            return GameConstants.SCORE_ADVANTAGE + GameConstants.TXT_COLON + getHighScorer();
         } else {
             currentGameScore = formatScore();
         }
@@ -47,6 +47,10 @@ public class TennisGame implements TennisGameInterface {
         } else {
             secondPlayer.setScoredPoint(secondPlayer.getScoredPoint() + 1);
         }
+    }
+
+    private String getHighScorer() {
+        return firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName() : secondPlayer.getName();
     }
 
     private boolean checkForAdvantage() {
