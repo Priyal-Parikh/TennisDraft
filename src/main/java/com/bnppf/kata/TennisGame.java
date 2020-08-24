@@ -7,6 +7,7 @@ public class TennisGame implements TennisGameInterface {
     private String firstPlayerName;
     private String secondPlayerName;
     private int firstPlayerScore;
+    private int secondPlayerScore;
 
     public TennisGame(String firstPlayerName , String secondPlayerName) {
         this.firstPlayerName = firstPlayerName;
@@ -31,5 +32,13 @@ public class TennisGame implements TennisGameInterface {
 
     public int getFirstPlayerScore() {
         return firstPlayerScore;
+    }
+
+    public void increaseAPointForSecondPlayer() {
+        secondPlayerScore++;
+    }
+
+    public int getSecondPlayerScore() {
+        return secondPlayerScore;
     }
 }
