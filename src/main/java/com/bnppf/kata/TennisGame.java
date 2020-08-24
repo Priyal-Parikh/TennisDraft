@@ -29,7 +29,7 @@ public class TennisGame implements TennisGameInterface {
         if (checkForDeuce()) {
             currentGameScore = GameConstants.SCORE_DEUCE;
         } else if (checkForAdvantage()) {
-            return GameConstants.SCORE_ADVANTAGE + GameConstants.TXT_COLON + secondPlayer.getName();
+            return GameConstants.SCORE_ADVANTAGE + GameConstants.TXT_COLON + (firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName() : secondPlayer.getName());
         } else {
             currentGameScore = formatScore();
         }
