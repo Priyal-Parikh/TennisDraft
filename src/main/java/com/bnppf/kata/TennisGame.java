@@ -1,8 +1,9 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.constants.GameConstants;
+import com.bnppf.kata.interfaces.TennisGameInterface;
 
-public class TennisGame {
+public class TennisGame implements TennisGameInterface {
     private String firstPlayerName;
     private String secondPlayerName;
 

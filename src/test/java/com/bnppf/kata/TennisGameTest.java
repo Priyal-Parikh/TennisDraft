@@ -1,12 +1,13 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.constants.TestConstants;
+import com.bnppf.kata.interfaces.TennisGameInterface;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TennisGameTest {
-    TennisGame tennisGame;
+    TennisGameInterface tennisGame;
 
     @Before
     public void initialSetup() {
