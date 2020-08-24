@@ -24,7 +24,16 @@ public class TennisGame implements TennisGameInterface {
     }
 
     public String getScore() {
-        return GameConstants.SCORE_LOVE + GameConstants.TXT_SPACE + GameConstants.TXT_ALL;
+        String currentGameScore;
+        String firstPlayerTennisScore = getTennisFormatScore(firstPlayerScore);
+        String secondPlayerTennisScore = getTennisFormatScore(secondPlayerScore);
+
+        if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore))
+            currentGameScore = firstPlayerTennisScore + GameConstants.TXT_SPACE + GameConstants.TXT_ALL;
+        else
+            currentGameScore = firstPlayerTennisScore + GameConstants.TXT_COLON + secondPlayerTennisScore;
+
+        return currentGameScore;
     }
 
     public void increasePlayerScore(String pointWinnerPlayer) {
@@ -57,5 +66,17 @@ public class TennisGame implements TennisGameInterface {
 
     private boolean isPlayerExists(String playerName) {
         return null != playerName && !"".equals(playerName);
+    }
+
+    private String getTennisFormatScore(int points) {
+        String tennisScore = "";
+
+        if (points == 0) {
+            tennisScore = GameConstants.SCORE_LOVE;
+        } else if (points == 1) {
+            tennisScore = GameConstants.SCORE_FIFTEEN;
+        }
+
+        return tennisScore;
     }
 }

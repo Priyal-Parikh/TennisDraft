@@ -57,4 +57,12 @@ public class TennisGameTest {
 
         tennisGame.increasePlayerScore(TestConstants.RANDOM_PLAYER);
     }
+
+    @Test
+    public void scoreShouldBeLoveFifteenIfSecondPlayerScoresPoint() {
+        tennisGame.increasePlayerScore(TestConstants.SECOND_PLAYER);
+        tennisGame.getScore();
+
+        Assert.assertEquals(TestConstants.LOVE + TestConstants.COLON + TestConstants.FIFTEEN , tennisGame.getScore());
+    }
 }
