@@ -4,4 +4,6 @@ public interface TennisGameInterface {
     String getScore();
     String getSecondPlayerName();
     String getFirstPlayerName();
+    void increaseAPointForFirstPlayer();
+    int getFirstPlayerScore();
 }
