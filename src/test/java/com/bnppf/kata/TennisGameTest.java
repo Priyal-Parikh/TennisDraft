@@ -1,5 +1,6 @@
 package com.bnppf.kata;
 
+import com.bnppf.kata.constants.TestConstants;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,7 @@ public class TennisGameTest {
 
     @Before
     public void initialSetup() {
-        tennisGame = new TennisGame("Serena Williams" , "Maria Sharapova");
+        tennisGame = new TennisGame(TestConstants.FIRST_PLAYER , TestConstants.SECOND_PLAYER);
     }
 
     @Test
@@ -19,12 +20,12 @@ public class TennisGameTest {
 
     @Test
     public void startNewGameWithTwoPlayers() {
-        Assert.assertEquals("Serena Williams" , tennisGame.getFirstPlayerName());
-        Assert.assertEquals("Maria Sharapova" , tennisGame.getSecondPlayerName());
+        Assert.assertEquals(TestConstants.FIRST_PLAYER , tennisGame.getFirstPlayerName());
+        Assert.assertEquals(TestConstants.SECOND_PLAYER , tennisGame.getSecondPlayerName());
     }
 
     @Test
     public void initialScoreShouldBeLoveAll() {
-        Assert.assertEquals("Love All" , tennisGame.getScore());
+        Assert.assertEquals(TestConstants.LOVE + TestConstants.SPACE + TestConstants.ALL , tennisGame.getScore());
     }
 }
