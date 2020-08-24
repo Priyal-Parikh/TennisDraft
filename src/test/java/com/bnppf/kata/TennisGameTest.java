@@ -4,12 +4,16 @@ import com.bnppf.kata.constants.TestConstants;
 import com.bnppf.kata.entity.TennisPlayer;
 import com.bnppf.kata.exception.TennisException;
 import com.bnppf.kata.interfaces.TennisGameInterface;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
 
+@RunWith(JUnitParamsRunner.class)
 public class TennisGameTest {
     TennisGameInterface tennisGame;
 
@@ -75,10 +79,21 @@ public class TennisGameTest {
     }
 
     @Test
-    public void scoreShouldBeThirtyFifteenIfFirstPlayerScoresTwoAndSecondPlayerScoresOnePoint() {
-        prepareScore(TestConstants.TWO_POINT , TestConstants.ONE_POINT);
+    @Parameters({
+            "0, 0, Love All" ,
+            "0, 1, Love:Fifteen" ,
+            "0, 2, Love:Thirty" ,
+            "1, 0, Fifteen:Love" ,
+            "1, 1, Fifteen All" ,
+            "1, 2, Fifteen:Thirty" ,
+            "2, 0, Thirty:Love" ,
+            "2, 1, Thirty:Fifteen" ,
+            "2, 2, Thirty All"
+    })
+    public void scoreShouldBeAsPerParameters(int firstPlayerPoints , int secondPlayerPoints , String score) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
 
-        Assert.assertEquals(TestConstants.THIRTY + TestConstants.COLON + TestConstants.FIFTEEN , tennisGame.getScore());
+        Assert.assertEquals(score , tennisGame.getScore());
     }
 
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
