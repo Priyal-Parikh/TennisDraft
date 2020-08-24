@@ -1,6 +1,7 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.constants.GameConstants;
+import com.bnppf.kata.exception.TennisException;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 
 public class TennisGame implements TennisGameInterface {
@@ -27,10 +28,15 @@ public class TennisGame implements TennisGameInterface {
     }
 
     public void increasePlayerScore(String pointWinnerPlayer) {
-        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
+        if (!isPlayerValid(pointWinnerPlayer)) {
+            throw new TennisException("Invalid Player Name");
+        }
+
+        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName)) {
             firstPlayerScore++;
-        else if (pointWinnerPlayer.equalsIgnoreCase(secondPlayerName))
+        } else {
             secondPlayerScore++;
+        }
     }
 
     public int getFirstPlayerScore() {
@@ -39,5 +45,9 @@ public class TennisGame implements TennisGameInterface {
 
     public int getSecondPlayerScore() {
         return secondPlayerScore;
+    }
+
+    private boolean isPlayerValid(String playerName) {
+        return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayerName) || playerName.equalsIgnoreCase(secondPlayerName));
     }
 }

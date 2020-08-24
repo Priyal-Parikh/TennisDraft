@@ -1,13 +1,19 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.constants.TestConstants;
+import com.bnppf.kata.exception.TennisException;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class TennisGameTest {
     TennisGameInterface tennisGame;
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Before
     public void initialSetup() {
@@ -42,5 +48,13 @@ public class TennisGameTest {
         tennisGame.increasePlayerScore(TestConstants.SECOND_PLAYER);
 
         Assert.assertEquals(TestConstants.ONE_POINT , tennisGame.getSecondPlayerScore());
+    }
+
+    @Test
+    public void shouldThrowAnExceptionIfNameIsNotCorrect() {
+        exceptionRule.expect(TennisException.class);
+        exceptionRule.expectMessage("Invalid Player Name");
+
+        tennisGame.increasePlayerScore("Random Player");
     }
 }
