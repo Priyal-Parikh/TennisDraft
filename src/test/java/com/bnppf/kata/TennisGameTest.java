@@ -155,6 +155,19 @@ public class TennisGameTest {
         Assert.assertEquals(TestConstants.WINNER + TestConstants.COLON + TestConstants.FIRST_PLAYER , tennisGame.getScore());
     }
 
+    @Test
+    @Parameters({
+            "3, 5" ,
+            "0, 4" ,
+            "4, 6" ,
+            "20, 22"
+    })
+    public void shouldReturnSecondPlayerAsWinner(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(TestConstants.WINNER + TestConstants.COLON + TestConstants.SECOND_PLAYER , tennisGame.getScore());
+    }
+
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
         for (int counter = 0; counter < firstPlayerPoints; counter++)
             tennisGame.increasePlayerScore(TestConstants.FIRST_PLAYER);
