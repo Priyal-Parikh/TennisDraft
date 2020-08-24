@@ -1,6 +1,7 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.entity.TennisPlayer;
+import com.bnppf.kata.exception.TennisException;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 
 import java.util.Scanner;
@@ -11,7 +12,22 @@ public class TennisSimulator {
 
     public static void main(String[] args) {
         TennisGameInterface tennisGame = startGameWithTwoPlayers();
-        System.out.println("Game starts with score as :" + tennisGame.getScore());
+        System.out.println("Game starts!!!");
+
+        while (!tennisGame.getScore().contains("Winner")) {
+            System.out.print("Point scored by :");
+            String pointScoredByPlayer = scanner.nextLine();
+            try {
+                tennisGame.increasePlayerScore(pointScoredByPlayer);
+            } catch (TennisException e) {
+                System.out.println("Exception occurred: " + e.getMessage());
+            }
+            System.out.println("/////////////////////////////////////////////////////");
+            System.out.println(" "+tennisGame.getScore());
+            System.out.println("/////////////////////////////////////////////////////");
+        }
+
+        System.out.println("Game over!");
         scanner.close();
     }
 
