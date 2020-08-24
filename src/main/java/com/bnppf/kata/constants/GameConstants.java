@@ -6,6 +6,7 @@ public class GameConstants {
     public static final String TXT_COLON = ":";
     public static final String SCORE_DEUCE = "Deuce";
     public static final Object SCORE_ADVANTAGE = "Advantage";
+    public static final String SCORE_WINNER = "Winner";
 
     public static final String INVALID_PLAYER_NAME = "Invalid Player Name";
     public static final int THREE_POINT = 3;
