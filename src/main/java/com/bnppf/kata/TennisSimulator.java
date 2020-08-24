@@ -1,5 +1,8 @@
 package com.bnppf.kata;
 
+import com.bnppf.kata.entity.TennisPlayer;
+import com.bnppf.kata.interfaces.TennisGameInterface;
+
 import java.util.Scanner;
 
 public class TennisSimulator {
@@ -7,6 +10,12 @@ public class TennisSimulator {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        TennisGameInterface tennisGame = startGameWithTwoPlayers();
+        System.out.println("Game starts with score as :" + tennisGame.getScore());
+        scanner.close();
+    }
+
+    private static TennisGameInterface startGameWithTwoPlayers() {
         String firstPlayer;
         String secondPlayer;
 
@@ -21,6 +30,6 @@ public class TennisSimulator {
 
         } while ("".equals(firstPlayer) || "".equals(secondPlayer) || firstPlayer.equalsIgnoreCase(secondPlayer));
 
-        scanner.close();
+        return new TennisGame(new TennisPlayer(firstPlayer) , new TennisPlayer(secondPlayer));
     }
 }
