@@ -83,12 +83,17 @@ public class TennisGameTest {
             "0, 0, Love All" ,
             "0, 1, Love:Fifteen" ,
             "0, 2, Love:Thirty" ,
+            "0, 3, Love:Forty" ,
             "1, 0, Fifteen:Love" ,
             "1, 1, Fifteen All" ,
             "1, 2, Fifteen:Thirty" ,
+            "1, 3, Fifteen:Forty" ,
             "2, 0, Thirty:Love" ,
             "2, 1, Thirty:Fifteen" ,
-            "2, 2, Thirty All"
+            "2, 2, Thirty All" ,
+            "3, 0, Forty:Love" ,
+            "3, 1, Forty:Fifteen" ,
+            "3, 2, Forty:Thirty"
     })
     public void scoreShouldBeAsPerParameters(int firstPlayerPoints , int secondPlayerPoints , String score) {
         prepareScore(firstPlayerPoints , secondPlayerPoints);

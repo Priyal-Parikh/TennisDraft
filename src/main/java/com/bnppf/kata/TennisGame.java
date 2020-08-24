@@ -68,6 +68,8 @@ public class TennisGame implements TennisGameInterface {
             tennisScore = GameConstants.SCORE_FIFTEEN;
         } else if (points == GameConstants.TWO_POINT) {
             tennisScore = GameConstants.SCORE_THIRTY;
+        } else if (points == GameConstants.THREE_POINT) {
+            tennisScore = GameConstants.SCORE_FORTY;
         }
 
         return tennisScore;
