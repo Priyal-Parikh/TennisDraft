@@ -1,6 +1,7 @@
 package com.bnppf.kata;
 
 import com.bnppf.kata.constants.TestConstants;
+import com.bnppf.kata.entity.TennisPlayer;
 import com.bnppf.kata.exception.TennisException;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 import org.junit.Assert;
@@ -17,7 +18,7 @@ public class TennisGameTest {
 
     @Before
     public void initialSetup() {
-        tennisGame = new TennisGame(TestConstants.FIRST_PLAYER , TestConstants.SECOND_PLAYER);
+        tennisGame = new TennisGame(new TennisPlayer(TestConstants.FIRST_PLAYER) , new TennisPlayer(TestConstants.SECOND_PLAYER));
     }
 
     @Test
@@ -27,8 +28,8 @@ public class TennisGameTest {
 
     @Test
     public void startNewGameWithTwoPlayers() {
-        Assert.assertEquals(TestConstants.FIRST_PLAYER , tennisGame.getFirstPlayerName());
-        Assert.assertEquals(TestConstants.SECOND_PLAYER , tennisGame.getSecondPlayerName());
+        Assert.assertEquals(TestConstants.FIRST_PLAYER , tennisGame.getFirstPlayer().getName());
+        Assert.assertEquals(TestConstants.SECOND_PLAYER , tennisGame.getSecondPlayer().getName());
     }
 
     @Test
@@ -40,14 +41,14 @@ public class TennisGameTest {
     public void firstPlayerScoreShouldIncreaseAfterWinningAPoint() {
         tennisGame.increasePlayerScore(TestConstants.FIRST_PLAYER);
 
-        Assert.assertEquals(TestConstants.ONE_POINT , tennisGame.getFirstPlayerScore());
+        Assert.assertEquals(TestConstants.ONE_POINT , tennisGame.getFirstPlayer().getScoredPoint());
     }
 
     @Test
     public void secondPlayerScoreShouldIncreaseAfterWinningAPoint() {
         tennisGame.increasePlayerScore(TestConstants.SECOND_PLAYER);
 
-        Assert.assertEquals(TestConstants.ONE_POINT , tennisGame.getSecondPlayerScore());
+        Assert.assertEquals(TestConstants.ONE_POINT , tennisGame.getSecondPlayer().getScoredPoint());
     }
 
     @Test
