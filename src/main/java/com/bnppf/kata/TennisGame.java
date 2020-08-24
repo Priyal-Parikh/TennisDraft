@@ -26,16 +26,11 @@ public class TennisGame implements TennisGameInterface {
     public String getScore() {
         String currentGameScore;
 
-        if (firstPlayer.getScoredPoint() >= GameConstants.THREE_POINT && firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint())
-            return GameConstants.SCORE_DEUCE;
-
-        TennisScoreEnum firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getScoredPoint());
-        TennisScoreEnum secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getScoredPoint());
-
-        if (firstPlayerTennisScore.getScore().equalsIgnoreCase(secondPlayerTennisScore.getScore()))
-            currentGameScore = firstPlayerTennisScore.getScore() + GameConstants.TXT_SPACE + GameConstants.TXT_ALL;
-        else
-            currentGameScore = firstPlayerTennisScore.getScore() + GameConstants.TXT_COLON + secondPlayerTennisScore.getScore();
+        if (checkForDeuce()) {
+            currentGameScore = GameConstants.SCORE_DEUCE;
+        } else {
+            currentGameScore = formatScore();
+        }
 
         return currentGameScore;
     }
@@ -50,6 +45,27 @@ public class TennisGame implements TennisGameInterface {
         } else {
             secondPlayer.setScoredPoint(secondPlayer.getScoredPoint() + 1);
         }
+    }
+
+    private String formatScore() {
+        TennisScoreEnum firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getScoredPoint());
+        TennisScoreEnum secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getScoredPoint());
+
+        return isSameScore() ?
+                firstPlayerTennisScore.getScore() + GameConstants.TXT_SPACE + GameConstants.TXT_ALL :
+                firstPlayerTennisScore.getScore() + GameConstants.TXT_COLON + secondPlayerTennisScore.getScore();
+    }
+
+    private boolean checkForDeuce() {
+        return isScoreBeyondThirty() && isSameScore();
+    }
+
+    private boolean isSameScore() {
+        return firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint();
+    }
+
+    private boolean isScoreBeyondThirty() {
+        return firstPlayer.getScoredPoint() >= GameConstants.THREE_POINT;
     }
 
     private boolean isPlayerValid(String playerName) {
