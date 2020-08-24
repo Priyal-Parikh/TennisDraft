@@ -1,5 +1,8 @@
 package com.bnppf.kata.enums;
 
+import com.bnppf.kata.constants.GameConstants;
+import com.bnppf.kata.exception.TennisException;
+
 import java.util.Arrays;
 
 public enum TennisScoreEnum {
@@ -14,6 +17,10 @@ public enum TennisScoreEnum {
     }
 
     public static TennisScoreEnum fromScore(int point) {
+        if (point < GameConstants.ZERO_POINT || point > GameConstants.THREE_POINT) {
+            throw new TennisException(GameConstants.INVALID_TENNIS_POINT);
+        }
+
         return Arrays.stream(TennisScoreEnum.values()).filter(tennisScore -> tennisScore.point == point).findFirst().orElse(null);
     }
 
