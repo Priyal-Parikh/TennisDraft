@@ -71,9 +71,9 @@ public class TennisGame implements TennisGameInterface {
     private String getTennisFormatScore(int points) {
         String tennisScore = "";
 
-        if (points == 0) {
+        if (points == GameConstants.ZERO_POINT) {
             tennisScore = GameConstants.SCORE_LOVE;
-        } else if (points == 1) {
+        } else if (points == GameConstants.ONE_POINT) {
             tennisScore = GameConstants.SCORE_FIFTEEN;
         }
 
