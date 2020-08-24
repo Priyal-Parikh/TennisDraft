@@ -25,6 +25,10 @@ public class TennisGame implements TennisGameInterface {
 
     public String getScore() {
         String currentGameScore;
+
+        if (firstPlayer.getScoredPoint() >= GameConstants.THREE_POINT && firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint())
+            return GameConstants.SCORE_DEUCE;
+
         TennisScoreEnum firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getScoredPoint());
         TennisScoreEnum secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getScoredPoint());
 

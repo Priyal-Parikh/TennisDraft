@@ -14,4 +14,5 @@ public class TestConstants {
     public static final int TWO_POINT = 2;
     public static final String INVALID_PLAYER = "Invalid Player Name";
     public static final String RANDOM_PLAYER = "Random Player";
+    public static final String SCORE_DEUCE = "Deuce";
 }
