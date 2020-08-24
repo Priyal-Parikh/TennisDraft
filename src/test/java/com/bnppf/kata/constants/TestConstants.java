@@ -7,4 +7,6 @@ public class TestConstants {
     public static final String ALL = "All";
     public static final String SPACE = " ";
     public static final int ONE_POINT = 1;
+    public static final String INVALID_PLAYER = "Invalid Player Name";
+    public static final String RANDOM_PLAYER = "Random Player";
 }

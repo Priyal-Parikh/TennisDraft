@@ -29,7 +29,7 @@ public class TennisGame implements TennisGameInterface {
 
     public void increasePlayerScore(String pointWinnerPlayer) {
         if (!isPlayerValid(pointWinnerPlayer)) {
-            throw new TennisException("Invalid Player Name");
+            throw new TennisException(GameConstants.INVALID_PLAYER_NAME);
         }
 
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName)) {
@@ -48,6 +48,14 @@ public class TennisGame implements TennisGameInterface {
     }
 
     private boolean isPlayerValid(String playerName) {
-        return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayerName) || playerName.equalsIgnoreCase(secondPlayerName));
+        return isPlayerExists(playerName) && isPlayerNameCorrect(playerName);
+    }
+
+    private boolean isPlayerNameCorrect(String playerName) {
+        return playerName.equalsIgnoreCase(firstPlayerName) || playerName.equalsIgnoreCase(secondPlayerName);
+    }
+
+    private boolean isPlayerExists(String playerName) {
+        return null != playerName && !"".equals(playerName);
     }
 }
