@@ -41,9 +41,9 @@ public class TennisGame implements TennisGameInterface {
         }
 
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName())) {
-            firstPlayer.setScoredPoint(firstPlayer.getScoredPoint()+1);
+            firstPlayer.setScoredPoint(firstPlayer.getScoredPoint() + 1);
         } else {
-            secondPlayer.setScoredPoint(secondPlayer.getScoredPoint()+1);
+            secondPlayer.setScoredPoint(secondPlayer.getScoredPoint() + 1);
         }
     }
 
@@ -66,6 +66,8 @@ public class TennisGame implements TennisGameInterface {
             tennisScore = GameConstants.SCORE_LOVE;
         } else if (points == GameConstants.ONE_POINT) {
             tennisScore = GameConstants.SCORE_FIFTEEN;
+        } else if (points == GameConstants.TWO_POINT) {
+            tennisScore = GameConstants.SCORE_THIRTY;
         }
 
         return tennisScore;

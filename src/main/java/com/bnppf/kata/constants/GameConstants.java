@@ -3,6 +3,7 @@ package com.bnppf.kata.constants;
 public class GameConstants {
     public static final String SCORE_LOVE = "Love";
     public static final String SCORE_FIFTEEN = "Fifteen";
+    public static final String SCORE_THIRTY ="Thirty";
 
     public static final String TXT_ALL = "All";
     public static final String TXT_SPACE = " ";
@@ -12,4 +13,5 @@ public class GameConstants {
 
     public static final int ZERO_POINT = 0;
     public static final int ONE_POINT = 1;
+    public static final int TWO_POINT = 2;
 }
