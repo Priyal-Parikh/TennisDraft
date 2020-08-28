@@ -2,6 +2,7 @@ package com.bnppf.kata;
 
 import com.bnppf.kata.entity.TennisPlayer;
 import com.bnppf.kata.exception.TennisException;
+import com.bnppf.kata.game.TennisGame;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class TennisSimulator {
         System.out.println("Game starts!!!");
     try {
         while (!tennisGame.getScore().contains("Winner")) {
-            System.out.print("Enter point winner player:");
+            System.out.print("Enter point winning player:");
             String pointScoredByPlayer = scanner.nextLine();
             try {
                 tennisGame.increasePlayerScore(pointScoredByPlayer);

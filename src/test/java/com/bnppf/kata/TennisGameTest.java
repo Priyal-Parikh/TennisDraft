@@ -3,6 +3,7 @@ package com.bnppf.kata;
 import com.bnppf.kata.constants.TestConstants;
 import com.bnppf.kata.entity.TennisPlayer;
 import com.bnppf.kata.exception.TennisException;
+import com.bnppf.kata.game.TennisGame;
 import com.bnppf.kata.interfaces.TennisGameInterface;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

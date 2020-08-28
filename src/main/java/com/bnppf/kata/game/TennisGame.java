@@ -1,4 +1,4 @@
-package com.bnppf.kata;
+package com.bnppf.kata.game;
 
 import com.bnppf.kata.constants.GameConstants;
 import com.bnppf.kata.entity.TennisPlayer;
@@ -52,11 +52,7 @@ public class TennisGame implements TennisGameInterface {
     }
 
     private boolean checkForWinner() {
-        return hasAnyPlayerScoredForty() && pointDifference() > GameConstants.ONE_POINT;
-    }
-
-    private boolean hasAnyPlayerScoredForty() {
-        return secondPlayer.getScoredPoint() > GameConstants.THREE_POINT || firstPlayer.getScoredPoint() > GameConstants.THREE_POINT;
+        return isAnyPlayerBeyondForty() && pointDifference() > GameConstants.ONE_POINT;
     }
 
     private String getHighScorer() {
@@ -97,14 +93,14 @@ public class TennisGame implements TennisGameInterface {
     }
 
     private boolean isPlayerValid(String playerName) {
-        return isPlayerExists(playerName) && isPlayerNameCorrect(playerName);
+        return isPlayerNotNullOrEmpty(playerName) && isPlayerNameCorrect(playerName);
     }
 
     private boolean isPlayerNameCorrect(String playerName) {
         return playerName.equalsIgnoreCase(firstPlayer.getName()) || playerName.equalsIgnoreCase(secondPlayer.getName());
     }
 
-    private boolean isPlayerExists(String playerName) {
+    private boolean isPlayerNotNullOrEmpty(String playerName) {
         return null != playerName && !"".equals(playerName);
     }
 
